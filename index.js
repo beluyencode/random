@@ -39,6 +39,7 @@ click.addEventListener("click", () => {
         title.style.visibility = "visible"
         random.style.visibility = "visible"
         var lucky = data[Math.floor(Math.random() * data.length)];
+        data = data.filter(ele => ele !== lucky)
         fetch("http://150.95.112.76:6889/api/customer/code/" + lucky).then((res) => res.json()).then((res) => {
             console.log(res);
             if (res.status === "success") {
