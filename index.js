@@ -26,7 +26,7 @@ close.addEventListener("click", (e) => {
     open.style.display = "block"
 })
 
-fetch("http://150.95.112.76:8880/api/customer/randomed").then((res) => res.json()).then((res) => {
+fetch("http://150.95.112.76:6889/api/customer/randomed").then((res) => res.json()).then((res) => {
     console.log(res);
     if (res.status === "success") {
         data = res?.data;
@@ -39,11 +39,11 @@ click.addEventListener("click", () => {
         title.style.visibility = "visible"
         random.style.visibility = "visible"
         var lucky = data[Math.floor(Math.random() * data.length)];
-        fetch("http://150.95.112.76:8880/api/customer/" + lucky).then((res) => res.json()).then((res) => {
+        fetch("http://150.95.112.76:6889/api/customer/code/" + lucky).then((res) => res.json()).then((res) => {
             console.log(res);
             if (res.status === "success") {
                 user = res.data;
-                fetch("http://150.95.112.76:8880/api/customer/" + user.id, { method: "PUT", body: JSON.stringify(user) });
+                fetch("http://150.95.112.76:6889/api/customer/" + user.id, { method: "PUT", body: JSON.stringify(user) });
             }
         })
         let interval = setInterval(() => {
